@@ -83,11 +83,12 @@ def main(opts):
                 "{}.{}".format(name, fmt))
             if path.exists(dest):
                 skip += 1
-                archive_dest = path.join(opts['-a'], camera["MAC"], name)
+                archive_dest = path.join(opts['-a'], cam["MAC"], name)
                 archive_dir = path.dirname(archive_dest)
                 if not path.exists(archive_dir):
                     makedirs(archive_dir)
                 move(img, archive_dest)
+                continue
             destdir = path.dirname(dest)
             if not path.exists(destdir):
                 makedirs(destdir)
