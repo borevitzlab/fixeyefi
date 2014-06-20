@@ -17,9 +17,10 @@ FOLDER_NAMES = {
 
 CLI_DOC = """
 USAGE:
-    fixeyefi.py [-m] -c CONFIG -i EYEFI_BASE
+    fixeyefi.py [-m] -a ARCHIVE -c CONFIG -i EYEFI_BASE
 
 OPTIONS:
+    -a ARCHIVE      Archive dir
     -i EYEFI_BASE   Base directory of eyefi cache. Should contain MAC address
                     sub-folders.
     -c CONFIG       Config csv in format: MAC,Destination
@@ -82,7 +83,11 @@ def main(opts):
                 "{}.{}".format(name, fmt))
             if path.exists(dest):
                 skip += 1
-                continue
+                archive_dest = path.join(opts['-a'], camera["MAC"], name)
+                archive_dir = path.dirname(archive_dest)
+                if not path.exists(archive_dir):
+                    makedirs(archive_dir)
+                move(img, archive_dest)
             destdir = path.dirname(dest)
             if not path.exists(destdir):
                 makedirs(destdir)
