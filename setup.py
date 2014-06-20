@@ -24,7 +24,7 @@ setup(
     description=desc,
     author="Kevin Murray",
     author_email="spam@kdmurray.id.au",
-    url="https://github.com/borevitzlab/traitcapture-bin",
+    url="https://github.com/borevitzlab/fixeyefi",
     keywords=["timestream", "timelapse", "photography", "video"],
     classifiers=[
         "Programming Language :: Python",
